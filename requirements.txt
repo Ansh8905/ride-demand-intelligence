@@ -7,7 +7,7 @@ matplotlib
 seaborn
 joblib
 lightgbm
-streamlit
+streamlit>=1.45.0
 streamlit-folium
 plotly
 scipy
