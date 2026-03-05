@@ -6,10 +6,7 @@ folium
 matplotlib
 seaborn
 joblib
-jupyter
 lightgbm
-fastapi
-uvicorn
 streamlit
 streamlit-folium
 plotly

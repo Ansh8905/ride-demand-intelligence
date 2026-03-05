@@ -33,6 +33,32 @@ from src.model import MultiHorizonForecaster, SurgePricingModel
 from src.driver_allocation import DriverAllocator
 from src.utils import CITY_LAT_MIN, CITY_LAT_MAX, CITY_LON_MIN, CITY_LON_MAX
 
+
+# ═══════════════════════════════════════════════════════════
+#  AUTO-BOOTSTRAP (for Streamlit Cloud — data/ & models/ are gitignored)
+# ═══════════════════════════════════════════════════════════
+def _ensure_pipeline():
+    """Run the full pipeline if data or models are missing (first Cloud boot)."""
+    data_exists = os.path.exists("data/processed_demand.csv")
+    models_exist = os.path.exists("models/best_model.pkl") or os.path.exists("models/lgbm_15m.pkl")
+    if data_exists and models_exist:
+        return
+    from src.data_generation import generate_synthetic_data
+    from src.data_processing import process_data
+    os.makedirs("data", exist_ok=True)
+    os.makedirs("models", exist_ok=True)
+    if not os.path.exists("data/raw_rides.csv"):
+        generate_synthetic_data(num_rides=20000)
+    if not os.path.exists("data/processed_demand.csv"):
+        process_data(interval='15min')
+    if not models_exist:
+        df = pd.read_csv("data/processed_demand.csv")
+        forecaster = MultiHorizonForecaster()
+        forecaster.train(df)
+        forecaster.save("models")
+
+_ensure_pipeline()
+
 # ═══════════════════════════════════════════════════════════
 #  PAGE CONFIG
 # ═══════════════════════════════════════════════════════════
