@@ -14,7 +14,11 @@ import os
 import joblib
 from sklearn.cluster import KMeans
 from scipy.spatial import Voronoi
-from src.utils import *
+
+try:
+    from src.utils import *
+except ImportError:
+    from utils import *
 
 def create_zone_geodataframe(city_lat_min=CITY_LAT_MIN, city_lat_max=CITY_LAT_MAX, 
                              city_lon_min=CITY_LON_MIN, city_lon_max=CITY_LON_MAX, 

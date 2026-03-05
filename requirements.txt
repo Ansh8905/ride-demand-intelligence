@@ -2,13 +2,15 @@ pandas
 numpy
 scikit-learn
 xgboost
-geopandas
 folium
 matplotlib
 seaborn
 joblib
 jupyter
-flask
 lightgbm
 fastapi
 uvicorn
+streamlit
+streamlit-folium
+plotly
+scipy

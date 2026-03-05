@@ -2,7 +2,11 @@ import numpy as np
 import pandas as pd
 from datetime import timedelta
 import os
-from src.utils import *
+
+try:
+    from src.utils import *
+except ImportError:
+    from utils import *
 
 def generate_synthetic_data(output_file="data/raw_rides.csv", num_rides=50000):
     """

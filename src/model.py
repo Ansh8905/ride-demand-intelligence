@@ -67,14 +67,16 @@ class MultiHorizonForecaster:
                 num_leaves=31,
                 objective='regression',
                 n_jobs=-1,
-                random_state=42
+                random_state=42,
+                verbose=-1
             )
             
             model.fit(
                 X_train, y_train,
                 eval_set=[(X_test, y_test)],
                 eval_metric='rmse',
-                callbacks=[lgb.early_stopping(stopping_rounds=50)]
+                callbacks=[lgb.early_stopping(stopping_rounds=50, verbose=False),
+                           lgb.log_evaluation(period=0)]
             )
             
             self.models[horizon] = model

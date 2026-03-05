@@ -2,10 +2,15 @@ import pandas as pd
 import numpy as np
 import os
 import math
-from src.utils import *
-from src.geospatial import train_kmeans_clustering, save_clustering_model, load_clustering_model, assign_clusters
 
-def process_data(input_file="data/raw_rides.csv", output_file="data/processed_demand.csv", interval='15T'):
+try:
+    from src.utils import *
+    from src.geospatial import train_kmeans_clustering, save_clustering_model, load_clustering_model, assign_clusters
+except ImportError:
+    from utils import *
+    from geospatial import train_kmeans_clustering, save_clustering_model, load_clustering_model, assign_clusters
+
+def process_data(input_file="data/raw_rides.csv", output_file="data/processed_demand.csv", interval='15min'):
     """
     Cleans data, creates CLUSTER zones, aggregates demand, adds time features.
     Interval: Aggregation window (default 15 minutes).
@@ -62,7 +67,7 @@ def process_data(input_file="data/raw_rides.csv", output_file="data/processed_de
     # Fill missing supply/cancellation with 0 (or mean?) 
     # For supply, 0 is dangerous, use forward fill or mean imputation
     if 'active_drivers' in processed_df.columns:
-         processed_df['active_drivers'] = processed_df['active_drivers'].fillna(method='ffill').fillna(0)
+         processed_df['active_drivers'] = processed_df['active_drivers'].ffill().fillna(0)
     if 'is_cancelled' in processed_df.columns:
         processed_df['is_cancelled'] = processed_df['is_cancelled'].fillna(0)
 
