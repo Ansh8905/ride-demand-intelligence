@@ -687,7 +687,7 @@ elif page == "🗺️ Geospatial Intel":
         m = folium.Map(location=[CENTER_LAT, CENTER_LON], zoom_start=13, tiles='CartoDB dark_matter')
         HeatMap(s[['pickup_lat','pickup_long']].values.tolist(), radius=13, blur=16,
                 gradient={'0.2':'#0d0887','0.4':'#7201a8','0.6':'#bd3786','0.8':'#ed7953','1.0':'#fdca26'}).add_to(m)
-        st_folium(m, height=560, width=920)
+        st_folium(m, height=560, use_container_width=True, key="demand_heatmap_map")
 
     with tab2:
         st.markdown(section("📍", "K-Means Cluster Centroids", "cyan"), unsafe_allow_html=True)
@@ -701,7 +701,7 @@ elif page == "🗺️ Geospatial Intel":
                     color=c, fill=True, fill_color=c, fill_opacity=0.65, weight=2).add_to(m2)
                 folium.Marker(location=[lat,lon],
                     icon=folium.DivIcon(html=f'<div style="font-size:11px;font-weight:800;color:#fff;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,0.8);">{i}</div>')).add_to(m2)
-            st_folium(m2, height=560, width=920)
+            st_folium(m2, height=560, use_container_width=True, key="zone_clusters_map")
         else:
             st.info("KMeans model not found.")
 
