@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Streamlit-1.45-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/Streamlit-1.55-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
   <img src="https://img.shields.io/badge/LightGBM-3.3+-9ACD32?style=for-the-badge&logo=lightgbm&logoColor=white" />
   <img src="https://img.shields.io/badge/Plotly-5.x-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" />
   <img src="https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
@@ -227,7 +227,7 @@ pip install -r requirements.txt
 | `xgboost` | Alternative boosting (available) | Latest |
 | `plotly` | Interactive charts (bar, scatter, radar, heatmap, treemap) | Latest |
 | `folium` | Geographic map rendering | Latest |
-| `streamlit` | Dashboard framework | 1.45+ |
+| `streamlit` | Dashboard framework | 1.55+ |
 | `streamlit-folium` | Folium ↔ Streamlit bridge | Latest |
 | `fastapi` | REST API framework | Latest |
 | `uvicorn` | ASGI server for FastAPI | Latest |
@@ -552,7 +552,7 @@ Edit `src/data_generation.py` → `generate_rides()`:
 | `ModuleNotFoundError: streamlit_folium` | `pip install streamlit-folium` |
 | `FileNotFoundError: data/processed_demand.csv` | Run `python main.py` first |
 | `ERR_CONNECTION_REFUSED` when opening dashboard | Check if port 8501 is already in use; kill the process or use `streamlit run app.py --server.port 8502` |
-| Streamlit deprecation warnings | Ensure Streamlit 1.45+; the code uses `width="stretch"` instead of deprecated `use_container_width` |
+| Streamlit deprecation warnings | Ensure Streamlit 1.55+; the code uses `width="stretch"` instead of deprecated `use_container_width` |
 | Models show poor RMSE | Re-run `python main.py` — synthetic data has randomness; or tune hyperparameters |
 | Folium maps not rendering | Ensure `streamlit-folium>=0.15.0` is installed |
 | `ImportError: src.X` | Ensure `src/__init__.py` exists (created automatically) |
@@ -564,7 +564,7 @@ Edit `src/data_generation.py` → `generate_rides()`:
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| **UI Framework** | Streamlit 1.45+ | Dashboard rendering & interactivity |
+| **UI Framework** | Streamlit 1.55+ | Dashboard rendering & interactivity |
 | **Charts** | Plotly 5.x | Bar, line, scatter, radar, heatmap, treemap, pie |
 | **Maps** | Folium + streamlit-folium | HeatMap, CircleMarker, DivIcon overlays |
 | **ML Training** | LightGBM | Gradient boosted tree regressors |
