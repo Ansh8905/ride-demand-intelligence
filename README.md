@@ -34,6 +34,7 @@
 14. [Troubleshooting](#-troubleshooting)
 15. [Tech Stack](#-tech-stack)
 16. [License](#-license)
+17. [Deployment](#-deployment)
 
 ---
 
@@ -310,6 +311,37 @@ Opens at **http://localhost:8501** in your browser.
 - **Real-time recalculation** on parameter change
 - **Glassmorphism UI** with animated gradient blobs, hover effects, and micro-interactions
 - **Responsive layout** via Streamlit's wide mode
+
+---
+
+## 🚀 Deployment
+
+### 1) Streamlit Cloud (Dashboard)
+
+1. Open Streamlit Community Cloud and click **New app**.
+2. Select repository: **Ansh8905/ride-demand-intelligence**.
+3. Branch: **main**.
+4. Main file path: **app.py**.
+5. Click **Deploy**.
+
+Notes:
+- First boot can be slow because `app.py` may bootstrap missing data/models.
+- If build fails, check the app logs for dependency install errors.
+
+### 2) Render (FastAPI)
+
+This repo includes `render.yaml` for one-click API setup.
+
+1. Open Render and choose **New +** → **Blueprint**.
+2. Connect this GitHub repository.
+3. Render reads `render.yaml` and creates service `ride-demand-api`.
+4. Wait for deploy, then test:
+
+```bash
+curl https://<your-render-domain>/health
+```
+
+Expected response includes `"status": "healthy"`.
 
 ---
 
