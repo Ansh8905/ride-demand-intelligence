@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
 </p>
 
-<h1 align="center">⚡ RidePulse — Demand Intelligence Platform</h1>
+<h1 align="center">⚡ RidePulse — Demand Intelligence Platform(ride-demand-intelligence ∙ main ∙ app.py)</h1>
 
 <p align="center">
   <strong>End-to-end ride demand forecasting, surge pricing, fleet optimization & geospatial analytics</strong><br>
